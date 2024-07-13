@@ -38,22 +38,25 @@ public class FindDuplicateNumber {
 
     private static int findDuplicate(int[] arr) {
         int index = 0;
-        int ans = 1;
         while(index < arr.length) {
-            int correctIndex = arr[index] - 1;
-            if( arr[index] != arr[correctIndex] ) {
-                swap(arr, index, correctIndex);
+            if(arr[index] != index+1) {
+                int correctIndex = arr[index] - 1;
+                if( arr[index] != arr[correctIndex] ) {
+                    swap(arr, index, correctIndex);
+                } else {
+                    return arr[index];
+                }
             } else index++;
         }
         
         //search the duplicate number
-        for(int i=0; i< arr.length; i++) {
-            if(i != arr[i]-1) {
-                ans =  arr[i];
-            }
-        }
+//        for(int i=0; i< arr.length; i++) {
+//            if(i != arr[i]-1) {
+//                ans =  arr[i];
+//            }
+//        }
         
-        return ans;
+        return -1;
     }
 
     private static void swap(int[] arr, int index, int correctIndex) {
